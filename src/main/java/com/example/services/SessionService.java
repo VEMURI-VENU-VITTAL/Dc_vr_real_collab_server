@@ -53,4 +53,16 @@ public class SessionService {
 
         mongoTemplate.updateMulti(query, update, Session.class);
     }
+
+    public Session findSession(String sessionId){
+        Criteria criteria = new Criteria().andOperator(
+          Criteria.where(Session.Fields.id).is(sessionId),
+          Criteria.where(Session.Fields.sessionStatus).is(SessionStatus.ACTIVE)
+        );
+        Query query = new Query(criteria);
+
+        Session response = mongoTemplate.findOne(query, Session.class);
+
+        return response;
+    }
 }

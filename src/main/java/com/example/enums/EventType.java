@@ -1,5 +1,8 @@
 package com.example.enums;
 
 public enum EventType {
-    Movement
+    MOVEMENT,
+    APPEARS,
+    IDLE,
+    MOVING
 }

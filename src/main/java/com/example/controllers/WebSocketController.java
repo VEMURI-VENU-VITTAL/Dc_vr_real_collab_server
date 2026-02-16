@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +27,7 @@ public class WebSocketController {
 
     @MessageMapping("/room/{roomId}/event")
     public void testWebSocket(Event event, @DestinationVariable String roomId){
-        List<Event> eventList = eventMap.get(roomId);
+        List<Event> eventList = eventMap.getOrDefault(roomId, new ArrayList<>());
         eventList.add(event);
         eventMap.put(roomId, eventList);
         simpMessagingTemplate.convertAndSend("/topic/"+roomId+"/event", event);
