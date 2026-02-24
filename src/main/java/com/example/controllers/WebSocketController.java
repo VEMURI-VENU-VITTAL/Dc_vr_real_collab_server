@@ -1,6 +1,7 @@
 package com.example.controllers;
 
 import com.example.models.Event;
+import com.example.models.SignalMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -32,5 +33,13 @@ public class WebSocketController {
         eventMap.put(roomId, eventList);
         simpMessagingTemplate.convertAndSend("/topic/"+roomId+"/event", event);
         log.info("Event broad casted for roomid: {}, Event: {}", roomId, event);
+    }
+
+    @MessageMapping("/room/{roomId}/signal")
+    public void signal(@DestinationVariable String roomId, SignalMessage msg) {
+
+        msg.roomId = roomId;
+
+        simpMessagingTemplate.convertAndSend("/topic/room/" + roomId + "/signal", msg);
     }
 }
