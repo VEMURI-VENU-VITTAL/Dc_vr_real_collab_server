@@ -4,5 +4,6 @@ public enum SignalType {
     join,
     offer,
     answer,
-    ice
+    ice,
+    leave
 }
