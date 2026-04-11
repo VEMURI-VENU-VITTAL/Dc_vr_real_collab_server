@@ -20,7 +20,8 @@ public class Event {
     private String userId;
     private String sessionId;
     private EventType eventType;
-    private Movement movement;
+    private Position position;
+    private Quaternion quaternion;
 
     @CreatedDate
     private LocalDateTime createdAt;

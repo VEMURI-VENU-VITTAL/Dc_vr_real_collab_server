@@ -39,4 +39,17 @@ public class SessionController {
 
         return response;
     }
+
+    @GetMapping("/find")
+    public ResponseEntity<Session> findSession(@RequestParam String sessionId){
+        ResponseEntity<Session> response;
+        try{
+            Session session = sessionService.findSession(sessionId);
+            response = new ResponseEntity<>(session, Status.SUCCESS, "");
+        } catch (Exception e) {
+            response = new ResponseEntity<>(null, Status.FAILURE, e.getMessage());
+        }
+
+        return response;
+    }
 }

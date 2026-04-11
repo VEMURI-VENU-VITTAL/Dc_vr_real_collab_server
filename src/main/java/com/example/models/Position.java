@@ -9,8 +9,8 @@ import lombok.experimental.FieldNameConstants;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Movement {
-    private String x;
-    private String y;
-    private String z;
+public class Position {
+    private Float x;
+    private Float y;
+    private Float z;
 }
