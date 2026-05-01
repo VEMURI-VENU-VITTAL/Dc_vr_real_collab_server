@@ -4,5 +4,6 @@ public enum EventType {
     MOVEMENT,
     APPEARS,
     IDLE,
-    MOVING
+    MOVING,
+    QUIT
 }

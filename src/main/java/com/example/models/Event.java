@@ -18,6 +18,7 @@ public class Event {
     @Id
     private String id;
     private String userId;
+    private String userName;
     private String sessionId;
     private EventType eventType;
     private Position position;
